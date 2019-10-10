@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Reproducibility in Demographic Research</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Monica Alexander   University of Toronto" />
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/rladies.css" rel="stylesheet" />
+    <link href="libs/remark-css/rladies-fonts.css" rel="stylesheet" />
+    <script src="libs/kePrint/kePrint.js"></script>
+    <script src="https://use.fontawesome.com/5235085b15.js"></script>
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Reproducibility in Demographic Research
+### Monica Alexander <br> University of Toronto
+### Open Science Workshop <br> Max Planck Institute for Demographic Research <br> October 10th, 2019
+
+---
+
+
+
+
+
+class: center, middle, inverse
+
+# Overview
+
+---
+
+# Overview
+
+--
+
+## What is reproducibility?
+
+--
+
+## Why is it important?
+
+--
+
+## How do we make research reproducible?
+
+--
+
+## Challenges and open questions
+
+---
+
+
+class: center, middle, inverse
+
+# What is reproducibility?
+Reproduction in demography is not just fertility 👶
+---
+
+
+# What is reproducibility?
+
+--
+
+- Research is **reproducible** if it can be reproduced exactly, given all the materials used in the study
+
+--
+
+    + Note that materials need to be provided!
+--
+
+    + For demographic research, 'materials' usually means data, code and software
+--
+
+    + Reproduce the data, methods and results (including figures, tables)
+--
+
+- Another person should be able to take the exact same data, run the exact same analysis, and produce the exact same results
+
+--
+
+- Different to **replicability**
+
+--
+    
+    + carrying out a new study based on the description of the data and method provided in the original publication, and obtaining results that are similar enough.
+
+---
+
+# Increased awareness recently
+
+'Replication crisis', starting in Psychology, now extended to other fields
+
+--
+
+- Famous results called into question (e.g. Marshmallow test, power poses, ego depletion)
+
+--
+
+- Issues range from weaker evidence than originally thought, to fabrication of data
+
+--
+
+- 2018 paper: 13 of 21 were replicated, but the effect sizes were often much smaller
+
+&lt;img src="fig/nature_reprod.png" width="400" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Just one part of doing open science
+
+&lt;img src="fig/bubbles.png" width="1000" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+
+class: center, middle, inverse
+
+# Why is reproducibility important?
+
+---
+
+
+class: center
+
+
+background-image: url("https://media.giphy.com/media/26DOPCEoS8Ntc7suA/giphy.gif")
+background-position: 50% 50%
+
+# Reproducibility is important for science
+
+
+---
+
+# Important for science
+
+Allows us to:
+
+--
+
+- Trust
+
+--
+
+- Understand 
+
+--
+
+- Validate
+
+--
+
+- Replicate
+
+--
+
+- Build on / extend
+
+---
+
+# Example: mortality in Puerto Rico after Hurricane Maria
+
+- Category 5 hurricane hit Dominica, the U.S. Virgin Islands, and Puerto Rico in September 2017
+
+- Initial official death toll in PR was 64
+
+.pull-left[
+&lt;img src="fig/bin.png" width="1000" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+&lt;img src="fig/road.png" width="1000" style="display: block; margin: auto;" /&gt;
+]
+
+
+---
+
+# Mortality in Puerto Rico after Hurricane Maria
+
+
+- Team of researchers ran a survey to ascertain an independent estimate of mortality
+
+--
+
+- Paper published in [NEJM](https://www.nejm.org/doi/full/10.1056/NEJMsa1803972) gave post-hurricane estimate of 4645 excess deaths (95% confidence interval, 793 to 8498)
+
+--
+
+- Huge amount of press, and both praise and criticism from researchers
+
+--
+
+- The team published all materials (including raw data!) on [GitHub](https://github.com/c2-d2/pr_mort_official)
+
+--
+
+- This allowed other researchers to rerun their analysis with different assumptions
+
+.pull-left[
+&lt;img src="fig/hmwiki.png" width="500" style="display: block; margin: auto;" /&gt;
+]
+
+
+.pull-right[
+&lt;img src="fig/hmresp.png" width="2000" style="display: block; margin: auto;" /&gt;
+]
+---
+
+class: center, middle
+
+# Reproducibility is important for policy-making
+
+---
+
+# Important for policy-making
+
+
+- A lot of our work has policy implications. 
+
+- Should be the goal for much of our research! To influence policy in order to improve lives. 
+
+- Reproducibility helps us to evaluate the evidence for implementing new policies based on findings.  
+
+
+&lt;img src="fig/impact.jpg" width="400" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+# Example: Early Intervention System (EIS)
+
+&lt;img src="fig/joco1.png" width="300" style="display: block; margin: auto;" /&gt;
+
+
+Team of researchers partnered with Johnson County, Kansas
+
+--
+
+- Goal of research is to develop an EIS to identify individuals who repeatedly cycle through multiple systems, including jails, EMS, mental health services.
+
+--
+
+- Output ('risk scores') directly affects policy and resource planning
+
+--
+
+- System needs to be reproducible not only for present but future data
+
+--
+
+- Lack of reproducibility / changes in risk scores could have negative consequences
+
+--
+
+Fully reproducible dnalysis pipeline on [GitHub](https://github.com/dssg/johnson-county-ddj-public).
+
+
+---
+
+class: center, middle
+
+# Reproducibility is important for other stakeholders who use our work
+
+---
+
+# Important for the broader community
+
+
+- Helps build trust and understanding in results
+
+
+- Publishing code and data may not be enough 
+
+
+- Consider other forms of reproducibility that promote usability
+
+
+&lt;img src="fig/panel.jpg" width="500" style="display: block; margin: auto;" /&gt;
+
+---
+
+
+# Example: Family Planning Estimation Tool
+
+&lt;img src="fig/fp2020.png" width="600" style="display: block; margin: auto;" /&gt;
+
+
+FP2020: adding an additional 120 million modern method users between 2012 and 2020 in the world’s 69 poorest countries. 
+
+[Track20](http://www.track20.org/) works directly with governments in participating FP2020 countries to monitor progress in family planning and to actively use data to improve family planning strategies and plans.
+
+
+
+---
+
+# Tracking FP2020
+
+- In order to track progress, we need estimates of modern contraceptive use. But this is challenging. 
+
+--
+
+- [Alkema et al. (2013)](https://www.ncbi.nlm.nih.gov/pubmed/23489750) uses complex statistical methods to combine and adjust multiple data sources of varying quality.
+
+--
+
+- Even if materials are fully reproducible, may be of limited use to those on the ground in the countries that are trying to achieve progress.
+
+--
+
+Family Planning Estimation Tool [(FPET)](https://fpet2019..org/#/) 
+
+--
+
+- R Shiny interactive application
+- Allows country health and government officials to visualize results
+- Rerun model to get estimates with new data
+
+
+---
+# FPET
+
+&lt;img src="fig/fpet.png" width="800" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+
+class: center, middle, inverse
+
+# How do we do it?
+
+---
+
+# Motivating example: coding regions
+
+Have a raw data set of studies by country. Want to create a new variable `region` that categorizes each country into their WHO region.
+
+&lt;img src="fig/studies.png" width="800" style="display: block; margin: auto;" /&gt;
+
+How would we do this?
+
+---
+
+# Coding regions
+
+Method 1: 
+
+- Google country/region correspondence
+- Manual entry in Excel
+
+--
+
+&lt;img src="fig/excel.png" width="400" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+# Coding regions
+
+Method 2: 
+
+- Google country/region correspondence
+- Manual entry in `R`
+
+
+
+--
+
+
+```r
+d &lt;- read_csv("data/countries.csv")
+d %&gt;% 
+  mutate(region = 
+           case_when(country=="United Kingdom of Great Britain and Northern Ireland"|country=="Israel" ~ "Europe",
+                     country=="India"|country=="Bangladesh"|country=="Indonesia" ~ "South-East Asia",
+                     country=="Kenya"|country=="Ethiopia" ~ "Africa",
+                     country=="Japan" ~ "Western Pacific",
+                     country=="Mexico" ~ "Americas",
+                     TRUE ~ "NA"
+  )) %&gt;% 
+  head(3) %&gt;% kable() %&gt;% kable_styling(font_size = 12)
+```
+
+&lt;table class="table" style="font-size: 12px; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; country &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; region &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; United Kingdom of Great Britain and Northern Ireland &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Europe &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; India &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; South-East Asia &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Bangladesh &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; South-East Asia &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+
+# Coding regions
+Method 3: 
+
+- Manually download country/region correspondence from [WHO website](http://apps.who.int/gho/data/node.metadata.COUNTRY?lang=en)
+- Save file in project folder (e.g. `data/info`)
+- Read file into `R`
+- Join to country list
+
+--
+
+
+```r
+who_country_region &lt;- read_csv("data/info/who_country_region.csv")
+d %&gt;% 
+  left_join(who_country_region %&gt;% 
+              rename(country = DisplayString) %&gt;% 
+              select(country, WHO_REGION)) %&gt;% 
+  rename(region = WHO_REGION) %&gt;% 
+  head(3) %&gt;% kable() %&gt;% kable_styling(font_size = 12)
+```
+
+&lt;table class="table" style="font-size: 12px; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; country &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; region &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; United Kingdom of Great Britain and Northern Ireland &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Europe &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; India &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; South-East Asia &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Bangladesh &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; South-East Asia &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+---
+
+# Coding regions
+
+Method 4: 
+
+- Download country/region correspondence from [WHO website](http://apps.who.int/gho/data/node.metadata.COUNTRY?lang=en) in `R`
+- Read file into `R`
+- Join to country list
+
+--
+
+
+```r
+file_url &lt;- "http://apps.who.int/gho/athena/data/xmart.csv?target=COUNTRY&amp;profile=xmart"
+utils::download.file(url = file_url,
+                     destfile = "data/info/who_country_region.csv")
+who_country_region &lt;- read_csv("data/info/who_country_region.csv")
+d %&gt;% 
+  left_join(who_country_region %&gt;% 
+              rename(country = DisplayString) %&gt;% 
+              select(country, WHO_REGION)) %&gt;% 
+  rename(region = WHO_REGION) %&gt;% 
+  head(3) %&gt;% kable() %&gt;% kable_styling(font_size = 12)
+```
+
+&lt;table class="table" style="font-size: 12px; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; country &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; region &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; United Kingdom of Great Britain and Northern Ireland &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Europe &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; India &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; South-East Asia &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Bangladesh &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; South-East Asia &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+---
+
+# Take-aways
+
+- Not just one way of being reproducible
+
+- Most appropriate methods/effort is context/skill dependent
+
+&lt;img src="fig/xkcd.png" width="400" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+
+# Tools
+
+No effort is too small!
+
+--
+.pull-left[
+- Document, document, document!
+
+- Well-commented code and details about assumptions goes a long way.
+
+- Aim to keep detailed 'lab notes' ]
+
+.pull-right[![](https://media.giphy.com/media/yfEjNtvqFBfTa/giphy.gif)]
+---
+
+# Tools
+
+### `R` Markdown
+
+--
+
+- 'dynamic' documents
+- write text and embed your code (in chunks and also inline)
+    + example: The square root of `\(\pi\)` is 1.77.
+- removes disjoint between analysis and report writing
+- render as pdf, html, word 
+- these slides are an example!
+
+&lt;img src="fig/rmd.png" width="500" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+# Tools
+
+### `R` packages
+
+--
+
+- Not just for CRAN
+- Encourages well-documented code
+- If you are writing modular code already, 90% of the way there
+- Nice way of reading in functions you use all the time
+
+---
+
+# Tools
+
+
+```r
+#devtools::install_github("MJAlexander/distortr")
+library(distortr)
+ar_ts &lt;- GetAR(nyears = 100, rho = 0.7, sigma = 0.1, seed = 1234)
+ggplot(data = tibble(year = 2000+(1:100), y = ar_ts), aes(year, y)) + geom_point() + geom_line()
+```
+
+&lt;img src="MPIDR_10102019_files/figure-html/unnamed-chunk-20-1.svg" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+# Tools
+
+### Other `R` tools
+
+--
+
+- `R` Shiny
+
+    + Interactive web-based applications to visualize results
+    + Lots of good examples and tutorials: https://shiny.rstudio.com/
+    + [Opioid example](https://sanjaybasu.shinyapps.io/opioid_geographic/)
+
+--
+
+- RStudio Cloud
+    
+    + Run RStudio through web browser
+    + Link to GitHub
+    + Useful for teaching [(demography example)](https://rstudio.cloud/project/167428)
+
+---
+
+# Tools
+
+### GitHub
+
+--
+
+- git is a version control system (think a more complicated Dropbox)
+
+- Designed for software engineers, but useful for all sorts of code
+
+- Useful for both collaborative and solo projects
+
+- GitHub is useful place to host open source projects
+
+&lt;img src="fig/final.png" width="800" style="display: block; margin: auto;" /&gt;
+
+
+--
+
+You will be learning about some of these tools tomorrow!
+---
+
+
+class: center, middle, inverse
+
+
+# Reproducibility across the whole data and analysis pipeline
+
+---
+
+# Data and analysis pipeline
+
+&lt;img src="fig/flow1.png" width="800" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Data and analysis pipeline
+
+&lt;img src="fig/flowa.png" width="800" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Data and analysis pipeline
+
+&lt;img src="fig/flow2.png" width="800" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Cleaning raw data
+
+- Very important reproducible step
+
+- Often neglected, but often contains the steps that are hardest to generalize
+
+- Working with text data can be particularly messy. 
+
+
+
+
+```r
+text &lt;- "THIS is        SomE text8 to be clean6ed."
+
+text %&gt;% 
+  str_squish() %&gt;% # removes excess white space
+  str_to_lower() %&gt;% 
+  str_remove_all("[0-9]")
+```
+
+```
+## [1] "this is some text to be cleaned."
+```
+
+
+---
+
+# Data and analysis pipeline
+
+&lt;img src="fig/flow3.png" width="800" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Auto-generating reports
+
+- Need to be able to match the numbers in the report to the numbers produced by the code!
+
+- Easy to get lost with different versions / models / cut-offs, especially working towards a tight deadline
+
+- R Markdown is one way to deal with this
+
+- If working with external stakeholders: create a R markdown file that takes the (final) output of your model, and formats this in the way you want to report / other stakeholders want to see. 
+
+```yaml
+title: "A very important set of tables"
+author: "Monica Alexander"
+date: "10/8/2019"
+output: word_document
+```
+
+---
+
+class: center, middle, inverse
+
+# Challenges and open questions
+
+---
+
+# What do we do when the data are confidential?
+
+--
+
+- Ideally we would have access to the complete raw data set that was used in analysis
+
+--
+
+- Sometimes this is not possible
+    + Restricted access files (e.g. micro-level mortality data)
+    + Completely confidential data (e.g. Chetty et al.'s access to IRS tax records)
+    + Ethical concerns
+    
+--
+
+What to do here?
+
+--
+
+- Simulation is one option to help improve reproducibility
+    + Create a fake dataset that has the same format to your real data
+    + That way, your code can still be run on something
+    + There are `R` packages to help with this (`simPop`)
+---
+
+# How to we better value reproducibility?
+
+--
+
+- There are reasons not to be reproducible and open
+
+--
+
+- Currently limited incentives
+
+---
+
+- How do we break the life-cycle whereby reproducibility is something we can really only afford to do post-tenure?
+
+--
+
+.pull-left[
+&lt;img src="fig/dr.png" width="800" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+&lt;img src="fig/drrep.png" width="800" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+# Reproducible for whom?
+
+&lt;img src="fig/wiles.jpg" width="500" style="display: block; margin: auto;" /&gt;
+
+--
+
+- Who should be able to reproduce our results?
+
+--
+
+- How to we move beyond 'code and materials available on GitHub'?
+
+---
+
+
+
+# Summary
+
+--
+
+- Reproducibility is not just publishing your code
+
+    + Data cleaning!
+    + Reproducible reports
+
+--
+
+- Anything is better than nothing
+
+    + Partial reproducibility is still good!
+    + Aim to get better with each new project
+
+--
+
+- Be the change you want to see in the world
+
+    + Work together with collaborators to improve workflow 
+    + Community groups / discussions with non-academics
+
+
+---
+
+class: inverse, middle
+
+# Thanks!
+
+&lt;a href="mailto:monica.alexander@utoronto.ca"&gt;&lt;i class="fa fa-paper-plane fa-fw"&gt;&lt;/i&gt;&amp;nbsp; monica.alexander@utoronto.ca&lt;/a&gt;&lt;br&gt;
+&lt;a href="monicaalexander.com"&gt;&lt;i class="fa fa-link fa-fw"&gt;&lt;/i&gt;&amp;nbsp; monicaalexander.com&lt;/a&gt;&lt;br&gt;
+&lt;a href="http://twitter.com/monjalexander"&gt;&lt;i class="fa fa-twitter fa-fw"&gt;&lt;/i&gt;&amp;nbsp; @monjalexander&lt;/a&gt;&lt;br&gt;
+&lt;a href="http://github.com/MJAlexander"&gt;&lt;i class="fa fa-github fa-fw"&gt;&lt;/i&gt;&amp;nbsp; @MJAlexander&lt;/a&gt;&lt;br&gt;
+
+Slides are fully reproducible 😀: https://github.com/MJAlexander/reproducibility-in-demography
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
