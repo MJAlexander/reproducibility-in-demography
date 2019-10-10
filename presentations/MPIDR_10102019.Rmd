@@ -292,7 +292,7 @@ Team of researchers partnered with Johnson County, Kansas
 
 --
 
-Fully reproducible dnalysis pipeline on [GitHub](https://github.com/dssg/johnson-county-ddj-public).
+Fully reproducible analysis pipeline on [GitHub](https://github.com/dssg/johnson-county-ddj-public).
 
 
 ---
@@ -835,4 +835,4 @@ class: inverse, middle
 <a href="http://twitter.com/monjalexander"><i class="fa fa-twitter fa-fw"></i>&nbsp; @monjalexander</a><br>
 <a href="http://github.com/MJAlexander"><i class="fa fa-github fa-fw"></i>&nbsp; @MJAlexander</a><br>
 
-Slides are fully reproducible 😀: https://github.com/MJAlexander/reproducibility-in-demography
+Slides are fully reproducible 😀: https://github.com/MJAlexander/reproducibility-in-demography/tree/master/presentations
