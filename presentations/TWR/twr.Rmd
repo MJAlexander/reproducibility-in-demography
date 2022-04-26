@@ -1,0 +1,366 @@
+---
+title: "Reproducibility in Demography"
+author: "Monica Alexander <br> University of Toronto"
+date: "Toronto Workshop on Reproducibility 2022"
+
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css 
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+    includes:
+      in_header: header.html
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(xaringanthemer)
+# extra_css <- list(
+#   ".red"   = list(color = "red"),
+#   ".small" = list("font-size" = "70%"),
+#   ".big" = list("font-size" = "120%"),
+#   ".full-width" = list(
+#     display = "flex",
+#     width   = "100%",
+#     flex    = "1 1 auto"
+#   )
+# )
+
+style_mono_light(
+  base_color = "#126c78",
+  header_font_google = google_font("Josefin Sans"),
+  text_font_google   = google_font("Montserrat", "300", "300i"),
+  code_font_google   = google_font("Fira Mono")
+)
+```
+
+
+
+# What is demography?
+
+### Demographers study population processes and how populations change over time. 
+
+
+- Interested structural and spatial changes, and how these population-level changes are intertwined with societal, economic, health, and welfare changes. 
+
+
+- A large part of demography includes developing good estimates of the main drivers of population change: fertility, mortality, and migration. 
+
+
+
+---
+
+# Why am I talking about it?
+
+#### Demography is foundational to and has large overlap with many other fields, especially sociology, economics, and epidemiology.
+
+(Also ecology)
+
+```{r, echo = FALSE, fig.align='center'}
+knitr::include_graphics("fig/ecology.png", dpi = 250)
+```
+
+---
+# Reproducibility considerations
+
+### Reproducibililty of demographic estimates should be of primary concern
+
+
+- Used in public and health policy (e.g. things like mortality rates, but also population counts)
+
+
+- Used in other fields of study (control for age, race/ethnicity)
+
+
+#### Attitude is often 'taken as given' even though that isn't the case
+
+--
+
+- We built this city (field) on theoretical and empirical approximations
+
+- Reproducibility is important to understand propagation of error and how demographic regularities may change over time
+
+---
+
+class: center, middle, inverse
+
+# Case study: average age of infant death
+
+
+---
+# Background
+
+#### Life table quantity $_na_x$: "Average time lived for those who died"
+
+- e.g. $_5a_{60}$: for those who died between ages 60-65, how long did they live past 60?
+
+--
+
+- A particular quantity of interest is the average age of infant death, i.e. the average number of days lived of those who died in the first year of life: $_1a_0$
+
+--
+
+- To get accurate measure, need individual life lines (know everyone's date of birth and death)
+
+--
+
+- More realistically, we usually only have death and population counts aggregated by age, so need to approximate
+
+--
+
+- It turns out there's a relatively strong relationship between $_1a_0$ and the infant mortality rate (number of infant deaths divided by live births)
+
+
+---
+# $_1a_0$ versus infant mortality
+
+```{r, echo = FALSE, fig.align='center'}
+knitr::include_graphics("fig/hmd_a0_imr_early_cohorts.png", dpi = 400)
+```
+
+
+---
+# Oh no
+
+```{r, echo = FALSE, fig.align='center'}
+knitr::include_graphics("fig/hmd_a0_imr_all_cohorts.png", dpi = 400)
+```
+
+
+---
+# Timeline
+
+--
+
+- Keyfitz-Flieger (1968, 1970, 1971): Tabulating World Populations
+$$
+_1a_0 = 0.07 + 1.7{_1M_0}
+$$
+
+--
+
+- Lots of people citing KF through the 1990s and 2000s (including key textbooks)
+
+
+```{r, echo = FALSE, fig.align='center'}
+knitr::include_graphics("fig/poston.png", dpi = 300)
+```
+.center[(Poston and Micklin, 2006)]
+
+
+--
+
+- Andreev and Kingkade (2015): updating using newly available data
+
+--
+
+- Alexander and Root (forthcoming): new method and data
+
+
+#### Question: how reproducible is Keyfitz & Flieger, and Andreev & Kingkade?
+
+---
+# Keyfitz and Flieger (1971)
+
+The empirical regression for $_1a_0$ is stated with no information about data or calculations.
+
+```{r, echo = FALSE, fig.align='center'}
+knitr::include_graphics("fig/kf.jpeg", dpi = 200)
+```
+
+
+---
+# Keyfitz and Flieger (1971)
+
+Published life tables and other population statistics for countries all over the world
+
+--
+- Detailed exposition of methods, listed all data sources used, FORTRAN code
+
+
+```{r, echo = FALSE, fig.align='center'}
+knitr::include_graphics("fig/data.png", dpi = 500)
+```
+
+- In theory, could go through listed data sources, hope that they are still attainable, see which ones have required information, and do the regression.
+
+
+
+---
+# Reproducing Andreev and Kingkade (2015)
+
+Updating equations based on new data
+
+- Using publicly available data through Human Mortality Database and US linked birth-death files
+
+--
+- No data of code files available with paper, but a detailed description of the data
+
+```{r, echo = FALSE, fig.align='center'}
+knitr::include_graphics("fig/AK1.png", dpi = 200)
+```
+
+```{r, echo = FALSE, fig.align='center'}
+knitr::include_graphics("fig/AK2.png", dpi = 200)
+```
+.right[Andreev and Kingkade, 2015 (excerpts from pg 368-369)]
+---
+# Reproducing Andreev and Kingkade (2015)
+
+- Methods were also adequately described
+
+```{r, echo = FALSE, fig.align='center'}
+knitr::include_graphics("fig/AK3.png", dpi = 200)
+```
+.right[Andreev and Kingkade, 2015 (excerpt from pg 375)]
+
+--
+- Using a different fitting method (Bayesian cutpoint regression in Stan) but (close to) the same dataset, we were able to get similar results
+
+```{r, echo = FALSE, fig.align='center'}
+knitr::include_graphics("fig/AR.png", dpi = 300)
+```
+.right[.small[Alexander and Root, 2020]]
+
+
+---
+# Our work 
+
+```{r, echo = FALSE, fig.align='center'}
+knitr::include_graphics("fig/hmd_a0_imr_all_cohorts.png", dpi = 400)
+```
+
+
+
+---
+# Our work 
+
+- Prematurity as a cause of death
+- Overall mortality conditions and prematurity forces act in opposing ways, which could explain the linear relationship breaking down at lower mortality levels
+
+```{r, echo = FALSE, fig.align='center'}
+knitr::include_graphics("fig/sim_grid.png", dpi = 500)
+```
+
+---
+# Our work (reproducibility)
+
+- Preprint: https://osf.io/preprints/socarxiv/z4qg9/
+
+```{r, echo = FALSE, fig.align='center'}
+knitr::include_graphics("fig/osf.png", dpi = 400)
+```
+
+--
+- Code: https://github.com/MJAlexander/a0-competing-effects
+
+```{r, echo = FALSE, fig.align='center'}
+knitr::include_graphics("fig/github.png", dpi = 400)
+```
+
+
+---
+
+class: center, middle, inverse
+
+# Reproducibility in demography more generally
+
+
+---
+# What do we do well?
+
+--
+
+- A lot of datasets are public
+
+    + [Human Mortality Database](https://mortality.org/), Human Fertility Database...
+    + IPUMS
+
+
+```{r, echo = FALSE, fig.align='center'}
+knitr::include_graphics("fig/hmd.png", dpi = 400)
+```
+    
+--
+
+- (Usually) a careful tabulation of sources, assumptions and adjustments
+
+    + e.g. [HMD Methods Protocol](https://mortality.org/Public/Docs/MP-Summary.pdf)
+
+---
+# What do we do well?
+
+
+--
+
+- Some of the top journals in the field are open access (*Demography*, *Demographic Research*)
+
+```{r, echo = FALSE, fig.align='center'}
+knitr::include_graphics("fig/demog_repro.png", dpi = 500)
+```
+   
+
+--
+
+- Relatively(?) enthusiastic uptake of preprints and reproducibility
+
+    + Posting to *Socarxiv* becoming the norm
+    + *Demographic Research* has special series of replicable articles
+
+---
+# What can we improve?
+
+--
+
+- Distinguishing data versus estimates
+
+    + e.g. UN World Population Prospects, Our World in Data
+
+--
+
+- Linking theory and implementation
+
+    + still a gap in teaching demographic theory and how to implement using reproducible computing methods
+    
+--
+
+- Qualitative / quantitative coding and reproducibility gap 
+
+    + See my [TWR talk](https://www.youtube.com/watch?v=yvM2C6aZ94k) from last year 😊
+
+---
+# Summary and takeaways
+
+--
+
+- Different levels of reproducibility
+
+--
+
+- Data, code, but also explanations
+
+--
+
+- Careful exposition increases confidence, but I am most confident when I can get the numbers myself (this includes in my own work 😅)
+
+--
+
+- Modern tools make it so much easier, but it's easy to become complacent 
+
+
+---
+
+# Thanks
+
+### Contact info
+
+<a href="mailto:monica.alexander@utoronto.ca"><i class="fa fa-paper-plane fa-fw"></i>&nbsp; monica.alexander@utoronto.ca</a><br>
+
+<a href="monicaalexander.com"><i class="fa fa-link fa-fw"></i>&nbsp; monicaalexander.com</a><br>
+
+<a href="http://twitter.com/monjalexander"><i class="fa fa-twitter fa-fw"></i>&nbsp; @monjalexander</a><br>
+
+<a href="http://github.com/MJAlexander"><i class="fa fa-github fa-fw"></i>&nbsp; @MJAlexander</a><br>
